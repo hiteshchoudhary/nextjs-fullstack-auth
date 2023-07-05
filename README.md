@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- https://github.com/Iamsidar07/nextjs-full-stack-auth
