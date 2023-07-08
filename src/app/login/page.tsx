@@ -45,7 +45,7 @@ export default function LoginPage() {
 
     return (
     <div className="flex items-center justify-center min-h-screen py-2 px-2">
-        <div className="flex flex-col border-white border-[2px] min-w-fit w-[60%] max-w-[600px] px-4 py-5 rounded-lg">
+        <div className="flex flex-col border-white border-[1px] min-w-fit w-[40%] max-w-[600px] px-4 py-5 rounded-lg">
         <h1 className="font-bold text-xl text-center mb-2 md:text-2xl lg:text-3xl">{loading ? "Processing" : "Login"}</h1>
         <hr />
         
@@ -60,7 +60,7 @@ export default function LoginPage() {
             />
         <label htmlFor="password" className="text-xl my-[10px]">Password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:border-gray-600 text-black"
             id="password"
             type="password"
             value={user.password}
