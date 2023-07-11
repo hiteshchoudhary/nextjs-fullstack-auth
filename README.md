@@ -42,4 +42,6 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
+- https://github.com/17rawat/authInNextJS
+- 
 - 
