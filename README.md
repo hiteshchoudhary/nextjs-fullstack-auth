@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- { GitHub Repo: https://github.com/Prithviraj-debug/nextjs_auth_app, Deployed Link: https://nextjs-auth-app-delta.vercel.app }
