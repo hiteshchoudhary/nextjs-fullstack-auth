@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- Aditya Submission - [Repo Link](https://github.com/AdityaChaudhary3/next-js-auth) and [Live Here](https://next-js-auth-pearl.vercel.app)
