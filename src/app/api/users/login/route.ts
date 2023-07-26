@@ -20,7 +20,10 @@ export async function POST(request: NextRequest){
         }
         console.log("user exists");
         
-        
+         //prevent login until user email is verified
+        if(user.isVerfied!==true){
+           return NextResponse.json({message:"verify your email first"},{status:400})
+        }   
         //check if password is correct
         const validPassword = await bcryptjs.compare(password, user.password)
         if(!validPassword){
