@@ -41,5 +41,5 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here: https://github.com/vladbyk89/auth-youtube-tutorial
-- 
+- Add your repo link here
+- https://github.com/vladbyk89/auth-youtube-tutorial
