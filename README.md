@@ -41,5 +41,5 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here
+- [With Forgot Password & secured mail credentials](https://github.com/pranavsambyal/emailAuthApp)
 - 
