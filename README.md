@@ -1,8 +1,9 @@
 # A detailed course to undestand nextjs
 
-This long video was designed to give you an indepth understanding about latest nextjs and how it works. 
+This long video was designed to give you an indepth understanding about latest nextjs and how it works.
 
 ## Tech Stack
+
 - Nextjs
 - typescript
 - mongodb
@@ -25,13 +26,18 @@ yarn dev
 # or
 pnpm dev
 ```
+
 ## Assignment
+
 1. Improve the UI of the application
 2. Add feature of forgot password
 
 ---
-### Hint:
+
+### Hint
+
 For forgot password feature.
+
 1. User needs a page to enter his email and submit.
 2. Validate if user exists, if yes, send him same token email that we discussed in this course
 3. User clicks on email and get a page to enter new password with a submit button.
@@ -39,7 +45,22 @@ For forgot password feature.
 5. Verify the token and save the new password after encrypting it.
 
 ---
+
 ## your completed assignments
 
 - Add your repo link here
-- 
+
+---
+
+- ISRAR KHAN - [Github](https://github.com/israromar)
+- [NESTJS-FULLSTACK-AUTH-GITHUB-LINK](https://github.com/israromar/nextjs-auth)
+- [DEPLOYED-LIVE-APP](https://nextjs-auth-brown-five.vercel.app/) on [Vercel](https://vercel.com/)
+
+- Changes made:
+  - Improve the UI of the application, added [Tailwind Components](https://tailwindui.com/components)
+  - Add basic home screen
+  - Add feature of forgot password
+  - Add feature of edit profile (username & email address)
+  - Put email verification check for signin api
+
+---
