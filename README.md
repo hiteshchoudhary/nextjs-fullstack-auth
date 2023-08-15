@@ -42,4 +42,7 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+
+
+- Hi Hitesh, I am Basavaraj, I have done with forgot password functionalities, and little UI part. I need to focus on coding part so. please check my repo and let me know, if any changes needs to be done in my code.
+- my repository link : https://github.com/basavarajofficial/auth-app.git
