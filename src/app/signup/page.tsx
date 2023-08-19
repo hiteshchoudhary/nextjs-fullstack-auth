@@ -18,10 +18,12 @@ export default function SignupPage() {
             <h1> Signup </h1>
             <hr />
             <label htmlFor="username">username</label>
-            <input type="text" 
+            <input className="p-2 border border-grary-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
+                type="text" 
                 id="username"
                 value={user.username}
                 onChange={(e) => setUser({...user, username: e.target.value})}
+                placeholder="username"
             />
         </div>
     )
