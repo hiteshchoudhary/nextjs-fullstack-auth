@@ -16,6 +16,13 @@ export default function SignupPage() {
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1> Signup </h1>
+            <hr />
+            <label htmlFor="username">username</label>
+            <input type="text" 
+                id="username"
+                value={user.username}
+                
+            />
         </div>
     )
 }
