@@ -21,7 +21,7 @@ export default function SignupPage() {
             <input type="text" 
                 id="username"
                 value={user.username}
-                
+                onChange={(e) => setUser({...user, username: e.target.value})}
             />
         </div>
     )
