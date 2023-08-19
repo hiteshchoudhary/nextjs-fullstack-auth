@@ -26,13 +26,22 @@ export default function SignupPage() {
                 placeholder="username"
             />
 
-            <label htmlFor="username">username</label>
+            <label htmlFor="email">email</label>
             <input className="p-2 border border-grary-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
                 type="text" 
-                id="username"
-                value={user.username}
-                onChange={(e) => setUser({...user, username: e.target.value})}
-                placeholder="username"
+                id="email"
+                value={user.email}
+                onChange={(e) => setUser({...user, email: e.target.value})}
+                placeholder="email"
+            />
+
+            <label htmlFor="password">password</label>
+            <input className="p-2 border border-grary-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
+                type="text" 
+                id="password"
+                value={user.password}
+                onChange={(e) => setUser({...user, password: e.target.value})}
+                placeholder="password"
             />
         </div>
     )
