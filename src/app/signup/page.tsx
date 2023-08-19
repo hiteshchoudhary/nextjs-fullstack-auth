@@ -14,8 +14,8 @@ export default function SignupPage() {
 
     }
     return(
-        <div className="flex">
-            <h1 className="text-center text-white text-2xl">Signup</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <h1> Signup </h1>
         </div>
     )
 }
