@@ -18,7 +18,7 @@ export default function SignupPage() {
             <h1> Signup </h1>
             <hr />
             <label htmlFor="username">username</label>
-            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
+            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
                 type="text" 
                 id="username"
                 value={user.username}
@@ -27,7 +27,7 @@ export default function SignupPage() {
             />
 
             <label htmlFor="email">email</label>
-            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
+            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
                 type="text" 
                 id="email"
                 value={user.email}
@@ -36,7 +36,7 @@ export default function SignupPage() {
             />
 
             <label htmlFor="password">password</label>
-            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600" 
+            <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
                 type="password" 
                 id="password"
                 value={user.password}
