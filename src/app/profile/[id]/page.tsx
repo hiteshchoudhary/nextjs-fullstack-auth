@@ -6,7 +6,7 @@ export default function UserProfile({params}: any) {
             <p
                 className="text-4xl"
             >
-                Profile page {params.id}
+                Profile page <span>{params.id}</span>
             </p>
         </div>
     )
