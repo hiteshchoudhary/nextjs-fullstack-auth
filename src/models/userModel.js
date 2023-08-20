@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide a password"],
     },
+    isVerfied: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);
