@@ -6,4 +6,4 @@ import bcryptjs from "bcryptjs";
 connect()
 
 
-export async 
+export async function POST()
