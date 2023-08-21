@@ -12,8 +12,15 @@ export default function SignupPage() {
         username: ""
     })
     const [buttonDisabled, setButtonDisabled] = React.useState(false); 
+    const [loading, setLoading] = React.useState(false);
     const onSignup = async() => {
-
+        try {
+            
+        } catch (error) {
+            
+        }finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
@@ -25,7 +32,7 @@ export default function SignupPage() {
     }, [user]);
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1> Signup </h1>
+            <h1> {loading ? "Processing" : "Signup "} </h1>
             <hr />
             <label htmlFor="username">username</label>
             <input className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
@@ -57,7 +64,7 @@ export default function SignupPage() {
                 onClick={onSignup}
                 className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
             >
-                {buttonDisabled ? "1" : "2"}
+                {buttonDisabled ? "No Signup" : "Signup"}
             </button>
         </div>
     )
