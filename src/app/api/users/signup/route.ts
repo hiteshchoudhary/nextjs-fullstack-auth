@@ -19,6 +19,11 @@ export async function POST(request: NextRequest){
         if(user){
             return NextResponse.json({error: "User already exists"}, {status: 400})
         }
+
+
+        //hash password
+        const salt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, salt)
     } catch (error: any) {
         return NextResponse.json({error: error.message}, {status: 500})
 
