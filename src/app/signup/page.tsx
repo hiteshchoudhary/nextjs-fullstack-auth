@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/Link";
-import React from "react";
+import React, { useEffect }  from "react";
 import { useRouter } from "next/navigation";
 import {axios} from "axios";
 
@@ -11,9 +11,14 @@ export default function SignupPage() {
         password: "",
         username: ""
     })
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const onSignup = async() => {
 
     }
+
+    useEffect(() => {
+        
+    }, [user]);
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1> Signup </h1>
