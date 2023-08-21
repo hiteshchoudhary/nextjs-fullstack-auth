@@ -11,7 +11,7 @@ export default function SignupPage() {
         password: "",
         username: ""
     })
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = React.useState(false); 
     const onSignup = async() => {
 
     }
