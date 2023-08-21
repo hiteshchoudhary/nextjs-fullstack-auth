@@ -30,6 +30,9 @@ export async function POST(request: NextRequest){
             email,
             password: hashedPassword
         })
+        const savedUser = await newUser.save()
+
+        
     } catch (error: any) {
         return NextResponse.json({error: error.message}, {status: 500})
 
