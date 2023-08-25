@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 
 export default function SignupPage() {
     const router = useRouter();
-    const [user, setUser] = React.useState({
+    const [user, setUser] = React.useState({ 
         email: "",
         password: "",
         username: ""
@@ -17,7 +17,7 @@ export default function SignupPage() {
     const onSignup = async() => {
         try {
             setLoading(true);
-            const response = await axios.post("/api/users/signup", user);
+            const response = await axios.post("/api/users/signup", user); 
             console.log("Signup success", response.data);
             router.push("/login");
         } catch (error) {
@@ -35,7 +35,7 @@ export default function SignupPage() {
         } else {
             setButtonDisabled(true);
         }
-    }, [user]);
+    }, [user]); 
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1> {loading ? "Processing" : "Signup "} </h1>
