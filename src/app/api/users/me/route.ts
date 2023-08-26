@@ -5,3 +5,5 @@ import User from "@/models/userModel";
 import { connect } from "@/dbConfig/dbConfig"; 
 
 connect();
+
+export async function GET(request:NextRequest){}
