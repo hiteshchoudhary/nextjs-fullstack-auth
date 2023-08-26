@@ -4,8 +4,9 @@ import Link from "next/link";
 import {toast} from "react-hot-toast";
 
 export default function ProfilePage() {
-    const logout = async () => {
+    const logout = async  () => {
         try {
+            await axios.get('/api/users/logout')
         } catch (error:any) {
             console.log(error.message);
             toast.error(error.message)
