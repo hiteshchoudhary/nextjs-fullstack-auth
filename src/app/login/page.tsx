@@ -23,6 +23,9 @@ export default function LoginPage() {
     const onLogin = async () => {
     }
 
+    useEffect(() => {
+        // code1
+    }, [user]);
 
     return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
