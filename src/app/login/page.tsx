@@ -22,10 +22,13 @@ export default function LoginPage() {
 
     const onLogin = async () => {
         try {
-            
+            setLoading(true);
+            const response = await axios.post("/api/users/login", user); 
         } catch (error: any) {
             console.log("Login failed", error.message);
             toast.error(error.message);
+        } finally {
+            setLoading(false);
         }
     }
 
