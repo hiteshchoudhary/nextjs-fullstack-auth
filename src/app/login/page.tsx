@@ -24,7 +24,11 @@ export default function LoginPage() {
     }
 
     useEffect(() => {
-        // code1
+        if(user.email.length > 0 && user.password.length > 0) {
+            setButtonDisabled(false);
+        } else{
+            setButtonDisabled(true);
+        }
     }, [user]);
 
     return (
@@ -43,17 +47,18 @@ export default function LoginPage() {
             />
         <label htmlFor="password">password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
             id="password"
             type="password"
             value={user.password}
             onChange={(e) => setUser({...user, password: e.target.value})}
             placeholder="password"
-            />
-            <button
+        />
+        <button
             onClick={onLogin}
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
-            <Link href="/signup">Visit Signup page</Link>
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here
+        </button>
+        <Link href="/signup">Visit Signup page</Link>
         </div>
     )
 
