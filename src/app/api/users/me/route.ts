@@ -6,8 +6,9 @@ import { connect } from "@/dbConfig/dbConfig";
 
 connect();
 
-export async function GET(request:NextRequest){
+export async function GET( request:NextRequest){
     try {
+        const userId = await getDataFromToken(request);
         
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status: 400});
