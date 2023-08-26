@@ -21,6 +21,12 @@ export default function LoginPage() {
 
 
     const onLogin = async () => {
+        try {
+            
+        } catch (error: any) {
+            console.log("Login failed", error.message);
+            toast.error(error.message);
+        }
     }
 
     useEffect(() => {
