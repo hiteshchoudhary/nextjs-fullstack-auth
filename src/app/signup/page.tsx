@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/Link";
+import Link from "next/link";
 import React, { useEffect }  from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -72,6 +72,7 @@ export default function SignupPage() {
             >
                 {buttonDisabled ? "No Signup" : "Signup"}
             </button>
+            <Link href="/login">Visit login page</Link>
         </div>
     )
 }
