@@ -14,6 +14,9 @@ export async function POST(request: NextRequest){
 
         const user = await User.findOne({verifyToken: token, verifyTokenExpiry: {$gt: Date.now()}});
         
+        if (!user) {
+            return NextResponse.json({error: "Invalid token"}, {status: 400})
+        }
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status: 500})
     
