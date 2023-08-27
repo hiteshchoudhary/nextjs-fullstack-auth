@@ -28,6 +28,17 @@ export default function ProfilePage() {
             <h1>Profile</h1>
             <hr />
             <p>Main Profile page</p>
+            <h2 
+                className="p-1 rounded bg-green-500"
+            >
+                {data === 'nothing' ? "Nothing" : 
+                    <Link 
+                        href={`/profile/${data}`}
+                    >
+                        {data}
+                    </Link>
+                }
+            </h2>
             <hr />
 
             <button
