@@ -5,4 +5,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 
-export default function VerifyEmailPage() {}
+export default function VerifyEmailPage() {
+    const [token, setToken] = useState("");
+}
