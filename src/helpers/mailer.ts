@@ -14,6 +14,14 @@ export const sendEmail = async({email, emailType, userId}:any) => {
                     verifyTokenExpiry: Date.now() + 3600000
                 }
             )
+        }else if (emailType === "RESET"){
+            await User.findByIdAndUpdate(
+                userId, 
+                {
+                    forgotPasswordToken: hashedToken, 
+                    forgotPasswordTokenExpiry: Date.now() + 3600000
+                }
+            )
         }
         
     } catch (error: any) {
