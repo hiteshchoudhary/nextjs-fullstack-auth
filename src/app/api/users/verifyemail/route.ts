@@ -18,6 +18,11 @@ export async function POST(request: NextRequest){
             return NextResponse.json({error: "Invalid token"}, {status: 400})
         }
         console.log("user @app/api/users/verifyemail/route.ts: " + user)
+
+        user.isVerfied = true;
+        user.verifyToken = undefined;
+        user.verifyTokenExpiry = undefined;
+        await user.save();
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status: 500})
     
