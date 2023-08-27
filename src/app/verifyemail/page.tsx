@@ -45,6 +45,12 @@ export default function VerifyEmailPage() {
                     </Link>
                 </div>
             )}
+            {error && (
+                <div>
+                    <h2 className="text-2xl bg-red-500 text-black">Error</h2>
+                    
+                </div>
+            )}
         </div>
     )
 }
