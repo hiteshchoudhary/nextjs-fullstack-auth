@@ -17,6 +17,7 @@ export async function POST(request: NextRequest){
         if (!user) {
             return NextResponse.json({error: "Invalid token"}, {status: 400})
         }
+        console.log("user @app/api/users/verifyemail/route.ts: " + user)
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status: 500})
     
