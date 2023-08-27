@@ -31,4 +31,12 @@ export default function VerifyEmailPage() {
             verifyUserEmail();
         }
     }, [token]);
+
+    return(
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <h1 className="text-4xl">Verify Email</h1>
+            
+
+        </div>
+    )
 }
