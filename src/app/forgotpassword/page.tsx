@@ -2,12 +2,25 @@
 
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export default function ForgotPasswordPage() {
     const [user, setUser] = useState({
         email: "" 
     })
-    const onForgotPassword = async () => {}
+    const [loading, setLoading] = React.useState(false);
+    const onForgotPassword = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.post("/api/users/forgotpassword", user); 
+        } catch (error: any) {
+            console.log(error.message);
+            toast.error(error.message)
+        }finally {
+            setLoading(false);
+        }
+    }
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1>Forgot password</h1>
