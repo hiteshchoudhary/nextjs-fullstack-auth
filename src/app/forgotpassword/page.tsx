@@ -4,16 +4,21 @@ import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 export default function ForgotPasswordPage() {
     const [user, setUser] = useState({
         email: "" 
     })
+    const router = useRouter();
     const [loading, setLoading] = React.useState(false);
     const onForgotPassword = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("/api/users/forgotpassword", user); 
+            const response = await axios.post("/api/users/forgotpassword", user);
+            // console.log("From /api/users/forgotpassword... Coming back to src/app/forgotpassword/page.tsx")
+            console.log("response: " + response)
+            router.push("/profile");
         } catch (error: any) {
             console.log(error.message);
             toast.error(error.message)
