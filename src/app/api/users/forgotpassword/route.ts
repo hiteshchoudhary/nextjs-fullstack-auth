@@ -2,6 +2,7 @@ import {connect} from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 import jwt from "jsonwebtoken";
+import { sendEmail } from "@/helpers/mailer";
 
 connect()
 
@@ -29,6 +30,7 @@ export async function POST(request: NextRequest){
                 forgotPasswordTokenExpiry: Date.now() + 3600000
             }
         )
+        await sendEmail({email, emailType: "VERIFY", userId: user._id})
         return NextResponse.json({
             message: "token of forgotten password created successfully",
             success: true,

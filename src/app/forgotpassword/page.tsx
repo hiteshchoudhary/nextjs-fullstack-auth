@@ -18,7 +18,7 @@ export default function ForgotPasswordPage() {
             const response = await axios.post("/api/users/forgotpassword", user);
             // console.log("From /api/users/forgotpassword... Coming back to src/app/forgotpassword/page.tsx")
             console.log("response: " + response)
-            router.push("/profile");
+            router.push("/login");
         } catch (error: any) {
             console.log(error.message);
             toast.error(error.message)
