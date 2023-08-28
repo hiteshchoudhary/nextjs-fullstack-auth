@@ -30,6 +30,7 @@ export default function ForgotPasswordPage() {
                 id="email"
                 type="text"
                 value={user.email}
+                onChange={(e) => setUser({...user, email: e.target.value})}
                 placeholder="email"
             />
             <button
