@@ -22,6 +22,13 @@ export async function POST(request: NextRequest){
         }
         const token =  await jwt.sign(tokenData,  process.env.TOKEN_SECRET!, {expiresIn: "1d"})
         console.log("token: " + token)
+        await User.findByIdAndUpdate(
+            user._id, 
+            {
+                forgotPasswordToken: token, 
+                forgotPasswordTokenExpiry: Date.now() + 3600000
+            }
+        )
         return NextResponse.json({
             message: "token of forgotten password created successfully",
             success: true,
