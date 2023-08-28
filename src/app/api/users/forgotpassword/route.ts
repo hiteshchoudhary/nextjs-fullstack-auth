@@ -21,22 +21,13 @@ export async function POST(request: NextRequest){
             random: random,
             email: user.email
         }
-        const token =  await jwt.sign(tokenData,  process.env.TOKEN_SECRET!, {expiresIn: "1d"})
-        console.log("token: " + token)
-        await User.findByIdAndUpdate(
-            user._id, 
-            {
-                forgotPasswordToken: token, 
-                forgotPasswordTokenExpiry: Date.now() + 3600000
-            }
-        )
-        await sendEmail({email, emailType: "VERIFY", userId: user._id})
+        await sendEmail({email, emailType: "RESET", userId: user._id})
         return NextResponse.json({
             message: "token of forgotten password created successfully",
-            success: true,
-            token
+            success: true
         })
     } catch (error: any) {
+        console.log(error.message)
         console.log("Error at src/app/api/users/forgotpassword/route.ts")
         return NextResponse.json({error: error.message}, {status: 500})
     }
