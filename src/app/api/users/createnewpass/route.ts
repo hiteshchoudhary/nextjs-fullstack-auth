@@ -6,10 +6,15 @@ connect()
 
 export async function POST(request: NextRequest){
     try {
-        
+        const reqBody =  await request.json()
+        const {email, password} = reqBody;
+        console.log("reqBody.password001: " + reqBody.password);
+
+        return NextResponse.json({
+            message: "Create new pass successful",
+            success: true,
+        })
     } catch (error: any) {
-        const reqBody = await request.json() 
-        const {email} = reqBody
-        console.log("email @ " + email)
+        return NextResponse.json({error: error.message}, {status: 500})
     }
 }
