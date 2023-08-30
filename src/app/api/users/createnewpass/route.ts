@@ -7,8 +7,11 @@ connect()
 export async function POST(request: NextRequest){
     try {
         const reqBody =  await request.json()
-        const {email, password} = reqBody;
-        console.log("reqBody.password001: " + reqBody.password);
+        const {password} = reqBody;
+        console.log("reqBody.password: " + reqBody.password);
+
+        const email = request.cookies.get("email")?.value || '';
+        console.log("Email: " + email)
 
         return NextResponse.json({
             message: "Create new pass successful",
