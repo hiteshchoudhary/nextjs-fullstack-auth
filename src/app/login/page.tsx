@@ -14,7 +14,6 @@ export default function LoginPage() {
     const [user, setUser] = React.useState({
         email: "",
         password: "",
-       
     })
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
