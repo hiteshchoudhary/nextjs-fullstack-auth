@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import User from "@/models/userModel";
 import bcryptjs from 'bcryptjs';
 
-export const sendEmail = async({email, emailType, userId}:any) => {
+export const sendEmail = async({email, emailType, userId, hashedPassword}:any) => {
     try {
         // create a hased token
         const hashedToken = await bcryptjs.hash(userId.toString(), 10)
@@ -22,6 +22,18 @@ export const sendEmail = async({email, emailType, userId}:any) => {
                 {
                     forgotPasswordToken: hashedToken, 
                     forgotPasswordTokenExpiry: Date.now() + 3600000
+                }
+            )
+        }else if (emailType === "RESETTED"){
+            console.log("Going to update password for the user: " + userId) // 64eb534511882d5cadc8a2fa
+            console.log("The new pass is: " + hashedPassword) // $2a$10$w8YcKAqU0HTrmMRiFrYWI.9asXQXy37fOf9puqW7STBFE7oIsC8fa
+            const formattedTimestamp = new Date().toLocaleString(); // Converts timestamp to a localized date and time string
+            await User.findByIdAndUpdate(
+                userId, 
+                {
+                    password: hashedPassword, 
+                    forgotPasswordToken: "Resetted password @" + formattedTimestamp,
+                    forgotPasswordTokenExpiry: ""
                 }
             )
         }
