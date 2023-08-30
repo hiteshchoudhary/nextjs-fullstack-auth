@@ -18,9 +18,13 @@ export async function POST(request: NextRequest){
     }
 
     console.log("Here is the end of POST @app/api/users/resetpassword/route.ts")
-    return NextResponse.json({
-        message: "Password resetted",
+
+    const response = NextResponse.json({
+        message: "Resetting the password",
         success: true,
-        user: user
     })
+    response.cookies.set("email", user.email, {
+        httpOnly: true, 
+    })
+    return response;
 }
