@@ -18,7 +18,7 @@ export default function ResetPasswordPage() {
             router.push("/createnewpass");
         } catch (error:any) {
             setError(true);
-            console.log(error.response.data);
+            console.log(error.reponse.data);
         }
     }
 
