@@ -1,5 +1,8 @@
 import {connect} from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
+import bcryptjs from "bcryptjs";
+import User from "@/models/userModel";
+import { sendEmail } from "@/helpers/mailer";
 
 
 connect()
@@ -12,6 +15,21 @@ export async function POST(request: NextRequest){
 
         const email = request.cookies.get("email")?.value || '';
         console.log("Email: " + email)
+
+        // Create a newtoken001 for the password
+        const salt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, salt)
+        // Update the password for the email to newtoken001
+        const user = await User.findOne({email})
+        if(!user){
+            return NextResponse.json({error: "User does Not exist"}, {status: 400})
+        }
+
+        await sendEmail({
+            email, emailType: "RESETTED", 
+            userId: user._id,
+            hashedPassword: hashedPassword !== undefined ? hashedPassword : ""
+        })
 
         return NextResponse.json({
             message: "Create new pass successful",

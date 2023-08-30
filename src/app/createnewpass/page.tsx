@@ -30,7 +30,7 @@ export default function CreateNewPagePage() {
                 type="password"
                 value={password.password}
                 onChange={(e) => setPassword({...password, password: e.target.value})}
-                placeholder="password"
+                placeholder=""
             />
             <button
                 onClick={onLogin}
