@@ -47,17 +47,37 @@ export const sendEmail = async({email, emailType, userId, hashedPassword}:any) =
             }
         });
 
-        const mailOptions = {
+        // const mailOptions = {
+        //     from: 'mamitianasolofo@gmail.com',
+        //     to: email,
+        //     subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
+        //     html: `<p>Click <a href="${process.env.DOMAIN}/${emailType === "VERIFY" ? "verifyemail": "resetpassword"}?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
+        //     or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/${emailType === "VERIFY" ? "verifyemail": "resetpassword"}?token=${hashedToken}
+        //     </p>`
+        // }
+
+        let mailOptions = {
             from: 'mamitianasolofo@gmail.com',
             to: email,
-            subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-            // html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
-            // or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
-            // </p>`
-            html: `<p>Click <a href="${process.env.DOMAIN}/${emailType === "VERIFY" ? "verifyemail": "resetpassword"}?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
-            or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/${emailType === "VERIFY" ? "verifyemail": "resetpassword"}?token=${hashedToken}
-            </p>`
         }
+
+        let subject = ""
+        let html = ""
+        if(emailType === "VERIFY") {
+            subject = "Verify your email"
+            html = `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to verify your email `
+            html += `or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}`
+        }else if (emailType === "RESET") {
+            subject = "Resetting your password"
+            html = `<p>Click <a href="${process.env.DOMAIN}/resetpassword?token=${hashedToken}">here</a> to reset your password `
+            html += `or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/resetpassword?token=${hashedToken}`
+        }else if (emailType === "RESETTED") {
+            subject = "Your password is resetted"
+            html = `<p>Click <a href="${process.env.DOMAIN}/login">here</a> to login with your new password `
+            html += `or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/login`
+        }
+        mailOptions["subject"] = subject
+        mailOptions["html"] = html
 
         const mailresponse = await transport.sendMail(mailOptions);
         return mailresponse;
