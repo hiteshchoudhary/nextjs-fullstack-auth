@@ -14,6 +14,7 @@ export default function CreateNewPagePage() {
         try {
             const response = await axios.post("/api/users/createnewpass", password); 
             toast.success("Create new pass");
+            // await axios.get('/api/users/logout')
             router.push("/login");
         } catch (error: any) {
             console.log("Create new pass failed", error.message);

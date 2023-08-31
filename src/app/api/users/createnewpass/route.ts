@@ -30,11 +30,19 @@ export async function POST(request: NextRequest){
             userId: user._id,
             hashedPassword: hashedPassword !== undefined ? hashedPassword : ""
         })
-
-        return NextResponse.json({
-            message: "Create new pass successful",
-            success: true,
-        })
+        const response = NextResponse.json( 
+            { 
+                message: "Create new pass successful", 
+                success: true, 
+            } 
+        ) 
+        response.cookies.set("email", "", { 
+            httpOnly: true, expires: new Date(0) 
+        });
+        response.cookies.set("token", "", { 
+            httpOnly: true, expires: new Date(0) 
+        });
+        return response
     } catch (error: any) {
         return NextResponse.json({error: error.message}, {status: 500})
     }
