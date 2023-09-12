@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.1.3",
+    "@stripe/stripe-js": "^2.1.3",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -17,6 +19,7 @@
     "bcryptjs": "^2.4.3",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
+    "framer-motion": "^10.16.4",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.3.1",
     "next": "13.4.7",

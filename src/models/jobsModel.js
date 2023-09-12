@@ -29,6 +29,6 @@ const userSchema = new mongoose.Schema({
     verifyTokenExpiry: Date,
 })
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const Jobs = mongoose.models.users || mongoose.model("users", userSchema);
 
-export default User;
+export default Jobs;
