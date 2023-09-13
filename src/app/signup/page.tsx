@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { NextResponse } from "next/server";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -24,6 +24,8 @@ export default function SignupPage() {
       router.push("/login");
     } catch (error) {
       console.log("Signup failed");
+      return NextResponse.json({error: "Internal server error" }, {status:500})
+      console.log(error)
     } finally {
       setLoading(false);
     }
@@ -50,7 +52,7 @@ export default function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-900 text-white">
-      <h1 className="text-3xl">{loading ? "Processing" : "Signup"}</h1>
+      <h1 className="text-3xl">{loading ? "Processing" : "Signup As a service Provider"}</h1>
       <hr className="w-16 border-t-2 border-gray-300 my-4" />
 
       <label htmlFor="email" className="mt-4">

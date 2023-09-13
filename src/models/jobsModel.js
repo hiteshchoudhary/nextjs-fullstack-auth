@@ -1,34 +1,30 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: [true, "Please provide a username"],
-        unique: true,
+const jobSchema = new mongoose.Schema({
+    service: {
+      type: String,
+      ref: 'Service',
+      required: true,
     },
-    email: {
-        type: String,
-        required: [true, "Please provide a email"],
-        unique: true,
+    location: {
+      type: String,
+      required: true,
     },
-    password: {
-        type: String,
-        required: [true, "Please provide a password"],
+    budget: {
+      type: Number,
+      required: true,
     },
-    isVerfied: {
-        type: Boolean,
-        default: false,
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
-    isAdmin: {
-        type: Boolean,
-        default: false,
+    updatedAt: {
+      type: Date,
+      default: Date.now,
     },
-    forgotPasswordToken: String,
-    forgotPasswordTokenExpiry: Date,
-    verifyToken: String,
-    verifyTokenExpiry: Date,
-})
-
-const Jobs = mongoose.models.users || mongoose.model("users", userSchema);
-
-export default Jobs;
+  });
+  
+  // Create a Job model
+  const Job = mongoose.model('Job', jobSchema);
+  
+  module.exports = Job;
