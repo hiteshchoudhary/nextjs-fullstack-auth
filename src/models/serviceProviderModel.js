@@ -1,19 +1,24 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: [true, "Please provide a username"],
-        unique: true,
-    },
+const ServiceProvidersSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "Please provide a email"],
         unique: true,
     },
+    phone: {
+        type: Number,
+        required: [true, "Please provide a username"],
+        unique: true,
+    },
+    
     password: {
         type: String,
         required: [true, "Please provide a password"],
+    },
+    services: {
+        type: [],
+        required: [true, "Add up to 3 services"]
     },
     isVerfied: {
         type: Boolean,
@@ -29,6 +34,6 @@ const userSchema = new mongoose.Schema({
     verifyTokenExpiry: Date,
 })
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const ServiceProvider = mongoose.models.serviceproviders || mongoose.model("serviceproviders", ServiceProvidersSchema);
 
-export default User;
+export default ServiceProvider;

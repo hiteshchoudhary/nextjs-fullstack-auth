@@ -1,26 +1,26 @@
 import nodemailer from 'nodemailer';
-import User from "@/models/userModel";
+import ServiceProvider from "@/models/serviceProviderModel";
 import bcryptjs from 'bcryptjs';
 
 
-export const sendEmail = async({email, emailType, userId}:any) => {
+export const sendEmail = async({email, emailType, ServiceProviderId}:any) => {
     try {
         // create a hased token
-        const hashedToken = await bcryptjs.hash(userId.toString(), 10)
+        const hashedToken = await bcryptjs.hash(ServiceProviderId.toString(), 10)
 
         if (emailType === "VERIFY") {
-            await User.findByIdAndUpdate(userId, 
+            await ServiceProvider.findByIdAndUpdate(ServiceProviderId, 
                 {verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600000})
         } else if (emailType === "RESET"){
-            await User.findByIdAndUpdate(userId, 
+            await ServiceProvider.findByIdAndUpdate(ServiceProviderId, 
                 {forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000})
         }
 
         var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
+            user: "sandbox.smtp.mailtrap.io",
             port: 2525,
             auth: {
-              user: "3fd364695517df",
+              ServiceProvider: "3fd364695517df",
               pass: "7383d58fd399cf"
               //TODO: add these credentials to .env file
             }
@@ -28,7 +28,7 @@ export const sendEmail = async({email, emailType, userId}:any) => {
 
 
         const mailOptions = {
-            from: 'hitesh@gmail.com',
+            from: 'pretoriusbrett1@gmail.com',
             to: email,
             subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
             html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
