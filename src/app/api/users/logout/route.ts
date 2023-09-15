@@ -9,9 +9,10 @@ export async function GET() {
                 success: true,
             }
         )
-        response.cookies.set("token", "", 
-        { httpOnly: true, expires: new Date(0) 
-        });
+
+        // deleting the existing cookie, in the video cookie was deleted by ending the date. 
+        response.cookies.delete("token");
+        
         return response;
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
