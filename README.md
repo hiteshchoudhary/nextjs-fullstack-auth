@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- https://github.com/rishabangadi/nextjs-auth-app Demo: [NextJS Auth App](https://nextjs-auth-app-uc19.vercel.app/)
+- https://github.com/rishabangadi/nextjs-auth-app  Demo: [NextJS Auth App](https://nextjs-auth-app-uc19.vercel.app/)
