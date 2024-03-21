@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/progress": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.14",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "jsonwebtoken": "^9.0.0",
