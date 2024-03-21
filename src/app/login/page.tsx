@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
 
     return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>{loading ? "Processing" : "Login"}</h1>
+        <h1 className="mb-7 text-3xl">{loading ?  <CircularProgress /> : "Login"}</h1>
         <hr />
         
         <label htmlFor="email">email</label>
