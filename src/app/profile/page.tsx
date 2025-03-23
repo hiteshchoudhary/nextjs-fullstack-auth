@@ -1,50 +1,50 @@
 "use client";
-import axios from "axios";
 import Link from "next/link";
-import React, {useState} from "react";
-import {toast} from "react-hot-toast";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import { NextRequest, NextResponse } from "next/server";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+export default function profilePage(){
+
+const router = useRouter();
+const [data,setData]= useState("nothing")
 
 
-export default function ProfilePage() {
-    const router = useRouter()
-    const [data, setData] = useState("nothing")
-    const logout = async () => {
-        try {
-            await axios.get('/api/users/logout')
-            toast.success('Logout successful')
-            router.push('/login')
-        } catch (error:any) {
-            console.log(error.message);
-            toast.error(error.message)
-        }
-    }
+const logOut=async()=>{
+ await axios.get("/api/users/logout")
+ toast.success("logged out successfully")
+ router.push('/login')
+}
+const getuserDetails=async()=>{
+    const res= await axios.get("/api/users/me")
+    console.log(res)
+    setData(res.data.data._id)
 
-    const getUserDetails = async () => {
-        const res = await axios.get('/api/users/me')
-        console.log(res.data);
-        setData(res.data.data._id)
-    }
+}
 
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>Profile</h1>
-            <hr />
-            <p>Profile page</p>
-            <h2 className="p-1 rounded bg-green-500">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
-            </Link>}</h2>
-        <hr />
-        <button
-        onClick={logout}
-        className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >Logout</button>
+return (
+  <div className="flex flex-col justify-center items-center min-h-screen bg-blue-300">
+    <h1 className="text-3xl font-bold font-sans text-amber-50">PROFILE</h1>
+    <hr />
+    <h2 className="flex items-center justify-center bg-purple-200 rounded-2xl p-3 m-4">
+      {data === "nothing" ? (
+        "nothing"
+      ) : (
+        <Link href={`/profile/${data}`}>{data} </Link>
+      )}
+    </h2>
 
-        <button
-        onClick={getUserDetails}
-        className="bg-green-800 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >GetUser Details</button>
+    <button
+      className="bg-green-300 w-45 rounded-2xl p-3 m-4"
+      onClick={getuserDetails}
+    >
+      Get User Details
+    </button>
 
-
-            </div>
-    )
+    <button className="bg-red-400 w-45 rounded-2xl p-3 m-4" onClick={logOut}>
+      LogOut
+    </button>
+  </div>
+);
 }
