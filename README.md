@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- [Hardik Gayner](https://github.com/imHardik1606/NextJs-fullstack-auth)
