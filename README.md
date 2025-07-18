@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- [Sohaib repo](https://github.com/Sohaibkundi2/Next-Auth-App)
