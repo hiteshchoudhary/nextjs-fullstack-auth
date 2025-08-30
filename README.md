@@ -41,5 +41,5 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here
-- 
+- [MailGuard - GitHub Repo](https://github.com/anuj-singal/MailGuard)  
+- [MailGuard - Live Demo](https://mail-guard-gilt.vercel.app/) 
