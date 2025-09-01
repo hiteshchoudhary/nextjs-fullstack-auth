@@ -42,4 +42,4 @@ For forgot password feature.
 ## your completed assignments
 
 - Add your repo link here
-- 
+- [k-gajjar-365](https://github.com/k-gajjar-365/NextJS-Fullstack-Auth)
