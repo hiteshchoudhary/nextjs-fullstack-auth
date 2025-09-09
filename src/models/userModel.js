@@ -1,34 +1,37 @@
 import mongoose from "mongoose";
+import { stringify } from "querystring";
+import { PassThrough } from "stream";
 
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "Please provide a username"],
-        unique: true,
+        unique: true
     },
     email: {
         type: String,
-        required: [true, "Please provide a email"],
-        unique: true,
+        required: [true, "Please provide an email"],
+        unique: true
+
     },
     password: {
         type: String,
-        required: [true, "Please provide a password"],
+        required: [true, "Please provide an email"],
     },
-    isVerfied: {
+    isVerified: {
         type: Boolean,
-        default: false,
+        default: false
     },
     isAdmin: {
         type: Boolean,
-        default: false,
+        default: false
     },
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
-})
+});
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;
