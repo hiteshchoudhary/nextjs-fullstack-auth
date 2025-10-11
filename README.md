@@ -41,5 +41,5 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here
+- [Add your repo link here](https://github.com/Souma-cpp/first-next-app)
 - 
