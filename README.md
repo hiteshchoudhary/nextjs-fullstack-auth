@@ -41,5 +41,6 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here
-- 
+- All the changes with the password reset functionality 
+
+- Repo Link : https://github.com/aryanghugare/Auth-Next-js 
