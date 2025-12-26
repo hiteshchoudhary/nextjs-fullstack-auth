@@ -1,53 +1,70 @@
-import {connect} from "@/dbConfig/dbConfig";
+import dbConnect from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
-import { NextRequest, NextResponse } from "next/server";
-import bcryptjs from "bcryptjs";
+import { NextResponse, NextRequest } from "next/server";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-connect()
+export async function POST(request: NextRequest) {
+  try {
+    await dbConnect();
 
-export async function POST(request: NextRequest){
-    try {
+    const reqbody = await request.json();
+    const { email, password } = reqbody;
 
-        const reqBody = await request.json()
-        const {email, password} = reqBody;
-        console.log(reqBody);
-
-        //check if user exists
-        const user = await User.findOne({email})
-        if(!user){
-            return NextResponse.json({error: "User does not exist"}, {status: 400})
-        }
-        console.log("user exists");
-        
-        
-        //check if password is correct
-        const validPassword = await bcryptjs.compare(password, user.password)
-        if(!validPassword){
-            return NextResponse.json({error: "Invalid password"}, {status: 400})
-        }
-        console.log(user);
-        
-        //create token data
-        const tokenData = {
-            id: user._id,
-            username: user.username,
-            email: user.email
-        }
-        //create token
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {expiresIn: "1d"})
-
-        const response = NextResponse.json({
-            message: "Login successful",
-            success: true,
-        })
-        response.cookies.set("token", token, {
-            httpOnly: true, 
-            
-        })
-        return response;
-
-    } catch (error: any) {
-        return NextResponse.json({error: error.message}, {status: 500})
+    // Validation check (Basic)
+    if (!email || !password) {
+      return NextResponse.json(
+        { error: "Please fill all fields" },
+        { status: 400 }
+      );
     }
+    // 1. Check if user exists
+    const existingUser = await User.findOne({ email });
+    if (!existingUser) {
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 400 }
+      );
+    }
+    // 2. Compare passwords
+    const isMatch = await bcrypt.compare(password, existingUser.password);
+    if (!isMatch) {
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 400 }
+      );
+    }
+
+    const tokenData = {
+      id: existingUser._id,
+      username: existingUser.username,
+      email: existingUser.email,
+    };
+
+    const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+      expiresIn: "1d",
+    });
+
+    const responce = NextResponse.json({
+      message: "Login successful",
+      success: true,
+      user: {
+        id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+      },
+    });
+    responce.cookies.set("token", token, {
+      httpOnly: true,
+    });
+
+    return responce;
+  } catch (error: any) {
+    console.log("Login Error Details:", error);
+
+    return NextResponse.json(
+      { error: error.message || "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }

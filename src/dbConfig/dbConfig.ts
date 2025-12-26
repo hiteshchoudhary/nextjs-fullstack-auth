@@ -1,24 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-export async function connect() {
-    try {
-        mongoose.connect(process.env.MONGO_URI!);
-        const connection = mongoose.connection;
+// Cache the connection to prevent multiple connections in dev mode
+let isConnected = false;
 
-        connection.on('connected', () => {
-            console.log('MongoDB connected successfully');
-        })
+export default async function dbConnect() {
+  if (isConnected) {
+    console.log("Using existing DB connection");
+    return;
+  }
 
-        connection.on('error', (err) => {
-            console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-            process.exit();
-        })
-
-    } catch (error) {
-        console.log('Something goes wrong!');
-        console.log(error);
-        
-    }
-
-
+  try {
+    const db = await mongoose.connect(process.env.MONGODB_URI!);
+    console.log("Connected to:", db.connection.host);
+  } catch (error: any) {
+    // This line will print the EXACT reason in your VS Code terminal
+    console.error("DETAILED MONGO ERROR:", error.message);
+    throw error;
+  }
 }
