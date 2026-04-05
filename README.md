@@ -41,5 +41,5 @@ For forgot password feature.
 ---
 ## your completed assignments
 
-- Add your repo link here
+- [Vikramaditya Gorai - Assignment Solution](https://github.com/Vikramaditya-01/NextJS-Auth)
 - 
